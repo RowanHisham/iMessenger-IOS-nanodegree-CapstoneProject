@@ -3,18 +3,34 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E627043C906A9A90906A6702 /* Pods_iMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3C61046C9EEC46A52EF3A1C /* Pods_iMessenger.framework */; };
 		F31D7D742457609F00E46B82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D732457609F00E46B82 /* AppDelegate.swift */; };
 		F31D7D762457609F00E46B82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D752457609F00E46B82 /* ViewController.swift */; };
 		F31D7D792457609F00E46B82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31D7D772457609F00E46B82 /* Main.storyboard */; };
 		F31D7D7B245760A000E46B82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31D7D7A245760A000E46B82 /* Assets.xcassets */; };
 		F31D7D7E245760A000E46B82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31D7D7C245760A000E46B82 /* LaunchScreen.storyboard */; };
+		F31D7D8724576CBD00E46B82 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D8624576CBD00E46B82 /* LoginViewController.swift */; };
+		F31D7D8924576CF500E46B82 /* LoginViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D8824576CF500E46B82 /* LoginViewControllerExtension.swift */; };
+		F31D7D8D2457707300E46B82 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D8C2457707300E46B82 /* UITextFieldExtension.swift */; };
+		F31D7D8F2457709C00E46B82 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D8E2457709C00E46B82 /* UIColorExtension.swift */; };
+		F31D7D912457796E00E46B82 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D902457796E00E46B82 /* SignupViewController.swift */; };
+		F31D7D9324577AE800E46B82 /* SignupViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D9224577AE800E46B82 /* SignupViewControllerExtension.swift */; };
+		F31D7D952457AD1A00E46B82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31D7D942457AD1A00E46B82 /* GoogleService-Info.plist */; };
+		F31D7D972457B95900E46B82 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D962457B95900E46B82 /* UIViewControllerExtension.swift */; };
+		F31D7D9B2457CC8100E46B82 /* MessegesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7D9A2457CC8100E46B82 /* MessegesTableViewController.swift */; };
+		F31D7DA12457DD8600E46B82 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7DA02457DD8600E46B82 /* FirebaseClient.swift */; };
+		F31D7DA62457DEDB00E46B82 /* iMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F31D7DA42457DEDB00E46B82 /* iMessenger.xcdatamodeld */; };
+		F31D7DA82457DF6C00E46B82 /* dataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D7DA72457DF6C00E46B82 /* dataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		441123374AFA1F981D573889 /* Pods-iMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessenger.release.xcconfig"; path = "Target Support Files/Pods-iMessenger/Pods-iMessenger.release.xcconfig"; sourceTree = "<group>"; };
+		B3C61046C9EEC46A52EF3A1C /* Pods_iMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D712D17A96F84BE20A841C32 /* Pods-iMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMessenger.debug.xcconfig"; path = "Target Support Files/Pods-iMessenger/Pods-iMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 		F31D7D702457609F00E46B82 /* iMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31D7D732457609F00E46B82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F31D7D752457609F00E46B82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +38,18 @@
 		F31D7D7A245760A000E46B82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F31D7D7D245760A000E46B82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F31D7D7F245760A000E46B82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F31D7D8624576CBD00E46B82 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F31D7D8824576CF500E46B82 /* LoginViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerExtension.swift; sourceTree = "<group>"; };
+		F31D7D8C2457707300E46B82 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		F31D7D8E2457709C00E46B82 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		F31D7D902457796E00E46B82 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		F31D7D9224577AE800E46B82 /* SignupViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewControllerExtension.swift; sourceTree = "<group>"; };
+		F31D7D942457AD1A00E46B82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F31D7D962457B95900E46B82 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		F31D7D9A2457CC8100E46B82 /* MessegesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessegesTableViewController.swift; sourceTree = "<group>"; };
+		F31D7DA02457DD8600E46B82 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		F31D7DA52457DEDB00E46B82 /* iMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iMessenger.xcdatamodel; sourceTree = "<group>"; };
+		F31D7DA72457DF6C00E46B82 /* dataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E627043C906A9A90906A6702 /* Pods_iMessenger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		051BF795D15BEAE6C452D1FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3C61046C9EEC46A52EF3A1C /* Pods_iMessenger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BFDF30B4F0A4DEEA34FF05D1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D712D17A96F84BE20A841C32 /* Pods-iMessenger.debug.xcconfig */,
+				441123374AFA1F981D573889 /* Pods-iMessenger.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F31D7D672457609F00E46B82 = {
 			isa = PBXGroup;
 			children = (
 				F31D7D722457609F00E46B82 /* iMessenger */,
 				F31D7D712457609F00E46B82 /* Products */,
+				BFDF30B4F0A4DEEA34FF05D1 /* Pods */,
+				051BF795D15BEAE6C452D1FF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +102,58 @@
 		F31D7D722457609F00E46B82 /* iMessenger */ = {
 			isa = PBXGroup;
 			children = (
+				F31D7D9E2457DD6700E46B82 /* Model */,
 				F31D7D732457609F00E46B82 /* AppDelegate.swift */,
+				F31D7D8A2457705700E46B82 /* Views */,
+				F31D7D8524576CA100E46B82 /* Controllers */,
 				F31D7D752457609F00E46B82 /* ViewController.swift */,
 				F31D7D772457609F00E46B82 /* Main.storyboard */,
 				F31D7D7A245760A000E46B82 /* Assets.xcassets */,
 				F31D7D7C245760A000E46B82 /* LaunchScreen.storyboard */,
 				F31D7D7F245760A000E46B82 /* Info.plist */,
+				F31D7D942457AD1A00E46B82 /* GoogleService-Info.plist */,
 			);
 			path = iMessenger;
+			sourceTree = "<group>";
+		};
+		F31D7D8524576CA100E46B82 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F31D7D8624576CBD00E46B82 /* LoginViewController.swift */,
+				F31D7D8824576CF500E46B82 /* LoginViewControllerExtension.swift */,
+				F31D7D902457796E00E46B82 /* SignupViewController.swift */,
+				F31D7D9224577AE800E46B82 /* SignupViewControllerExtension.swift */,
+				F31D7D962457B95900E46B82 /* UIViewControllerExtension.swift */,
+				F31D7D9A2457CC8100E46B82 /* MessegesTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F31D7D8A2457705700E46B82 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F31D7D8C2457707300E46B82 /* UITextFieldExtension.swift */,
+				F31D7D8E2457709C00E46B82 /* UIColorExtension.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F31D7D9E2457DD6700E46B82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F31D7D9F2457DD7500E46B82 /* Firebase */,
+				F31D7DA42457DEDB00E46B82 /* iMessenger.xcdatamodeld */,
+				F31D7DA72457DF6C00E46B82 /* dataController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F31D7D9F2457DD7500E46B82 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				F31D7DA02457DD8600E46B82 /* FirebaseClient.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F31D7D82245760A000E46B82 /* Build configuration list for PBXNativeTarget "iMessenger" */;
 			buildPhases = (
+				B5F2008860728351027F7A54 /* [CP] Check Pods Manifest.lock */,
 				F31D7D6C2457609F00E46B82 /* Sources */,
 				F31D7D6D2457609F00E46B82 /* Frameworks */,
 				F31D7D6E2457609F00E46B82 /* Resources */,
+				62E3FE2A33D05DF611E7B3AF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F31D7D7E245760A000E46B82 /* LaunchScreen.storyboard in Resources */,
+				F31D7D952457AD1A00E46B82 /* GoogleService-Info.plist in Resources */,
 				F31D7D7B245760A000E46B82 /* Assets.xcassets in Resources */,
 				F31D7D792457609F00E46B82 /* Main.storyboard in Resources */,
 			);
@@ -130,13 +225,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		62E3FE2A33D05DF611E7B3AF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iMessenger/Pods-iMessenger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iMessenger/Pods-iMessenger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iMessenger/Pods-iMessenger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5F2008860728351027F7A54 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iMessenger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F31D7D6C2457609F00E46B82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31D7D9324577AE800E46B82 /* SignupViewControllerExtension.swift in Sources */,
+				F31D7D8724576CBD00E46B82 /* LoginViewController.swift in Sources */,
+				F31D7D972457B95900E46B82 /* UIViewControllerExtension.swift in Sources */,
+				F31D7D912457796E00E46B82 /* SignupViewController.swift in Sources */,
 				F31D7D762457609F00E46B82 /* ViewController.swift in Sources */,
+				F31D7DA62457DEDB00E46B82 /* iMessenger.xcdatamodeld in Sources */,
+				F31D7D8924576CF500E46B82 /* LoginViewControllerExtension.swift in Sources */,
+				F31D7DA82457DF6C00E46B82 /* dataController.swift in Sources */,
+				F31D7D8D2457707300E46B82 /* UITextFieldExtension.swift in Sources */,
+				F31D7DA12457DD8600E46B82 /* FirebaseClient.swift in Sources */,
 				F31D7D742457609F00E46B82 /* AppDelegate.swift in Sources */,
+				F31D7D9B2457CC8100E46B82 /* MessegesTableViewController.swift in Sources */,
+				F31D7D8F2457709C00E46B82 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +428,7 @@
 		};
 		F31D7D83245760A000E46B82 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D712D17A96F84BE20A841C32 /* Pods-iMessenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +446,7 @@
 		};
 		F31D7D84245760A000E46B82 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 441123374AFA1F981D573889 /* Pods-iMessenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -334,6 +484,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F31D7DA42457DEDB00E46B82 /* iMessenger.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F31D7DA52457DEDB00E46B82 /* iMessenger.xcdatamodel */,
+			);
+			currentVersion = F31D7DA52457DEDB00E46B82 /* iMessenger.xcdatamodel */;
+			path = iMessenger.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F31D7D682457609F00E46B82 /* Project object */;
 }
