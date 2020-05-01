@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class LoginViewController: UIViewController {
 
@@ -17,18 +18,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
+    var messagesVC: MessagesTableViewController?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         emailTextField.delegate = self
         passwordTextField.delegate = self
         configureUI()
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
+    //////////////////////////////////////////////////////
+    // MARK: - Log in Authentication
     
     @IBAction func loginButtonClicked(_ sender: Any) {
         guard let email = emailTextField.text,
@@ -37,9 +37,14 @@ class LoginViewController: UIViewController {
                 return
         }
         
-        Firebase.Auth.auth().signIn(withEmail: email, password: password, completion: { (user: Firebase.AuthDataResult?, error) in
-            
+        setLogginIn(true)
+        LoginAuth(email, password)
+    }
+    
+    func LoginAuth(_ email: String, _ password: String) {
+        FirebaseClient.loginAuth(email: email, password: password, completion: { response, error in
             guard error == nil else{
+                self.setLogginIn(false)
                 self.showAlert(title: "Error", message: error!.localizedDescription, presentCompletion: nil)
                 return
             }
@@ -48,20 +53,23 @@ class LoginViewController: UIViewController {
         })
     }
     
+    //Load User Data and Login
     func fetchUserData() {
-        let uid = Firebase.Auth.auth().currentUser!.uid
-        Firebase.Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { snapshot in
-            if let dict = snapshot.value as! [String: AnyObject]?{
-                self.performSegue(withIdentifier: "login", sender: dict)
+        setLogginIn(false)
+        FirebaseClient.fetchUserData(){ user in
+            guard user != nil else {
+                self.showAlert(title: "Error", message: "Please try again later", presentCompletion: nil)
+                return
             }
-        })
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "login" {
-        if let viewController = segue.destination as? MessegesTableViewController {
-            viewController.dict = sender as! [String : AnyObject]
+
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let messagesVC = storyBoard.instantiateViewController(withIdentifier: "MessagesTableViewController") as! MessagesTableViewController
+            DispatchQueue.main.async {
+                self.messagesVC?.user = user
+                self.messagesVC?.setupController()
+                self.navigationController?.popToRootViewController(animated: true);
             }
         }
     }
 }
+

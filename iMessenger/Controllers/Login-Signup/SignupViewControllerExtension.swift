@@ -11,6 +11,9 @@ import UIKit
 
 extension SignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
     
+    //////////////////////////////////////////////////////
+    // MARK: - UI
+    
     func configureUI(){
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.isTranslucent = false
@@ -54,15 +57,15 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
 
     
-    // MARK: Hides KeyBoard after Returning from Editing Text Field
+    // Hides KeyBoard after Returning from Editing Text Field
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
-    // MARK: Show Network Activity
-    func setLogginIn(_ loggingIn: Bool){
-        if loggingIn{
+    // Show Network Activity
+    func setSigningUp(_ signingUp: Bool){
+        if signingUp{
             activityIndicator.startAnimating()
             nameTextField.isEnabled = false
             emailTextField.isEnabled = false
@@ -77,5 +80,31 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
             signupButton.isEnabled = true
             signupButton.alpha = 1.0
         }
+    }
+    
+    ///////////////////////////////////////////////////////////
+    // MARK: - Image Picker
+    
+    @IBAction func chooseImage(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = .photoLibrary
+        present(pickerController, animated: true, completion: nil)
+    }
+    
+    // Save Image Picked and dismiss the Picker View
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            self.userImage = image
+            self.imageButton.setImage(image, for: .normal)
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }

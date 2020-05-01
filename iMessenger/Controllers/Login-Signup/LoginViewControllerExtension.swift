@@ -11,6 +11,9 @@ import UIKit
 
 extension LoginViewController: UITextFieldDelegate{
     
+    //////////////////////////////////////////////////////
+    // MARK: - UI
+    
     func configureUI(){
         navigationController?.isNavigationBarHidden = true
         // Triggers preferredStatusBarStyle to make StatusBar Light
@@ -44,18 +47,18 @@ extension LoginViewController: UITextFieldDelegate{
         passwordTextField.setPaddingPoints(15)
     }
     
-    // MARK: Set Status Bar Color to White
+    // Set Status Bar Color to White
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    // MARK: Hides KeyBoard after Returning from Editing Text Field
+    // Hides KeyBoard after Returning from Editing Text Field
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
-    // MARK: Show Network Activity
+    // Show Network Activity
     func setLogginIn(_ loggingIn: Bool){
         if loggingIn{
             activityIndicator.startAnimating()
