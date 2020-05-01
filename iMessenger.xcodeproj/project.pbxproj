@@ -122,12 +122,10 @@
 			children = (
 				F31D7D732457609F00E46B82 /* AppDelegate.swift */,
 				F31D7D9E2457DD6700E46B82 /* Model */,
-				F3E6A58C245A5EFA00457453 /* Extensions */,
-				F31D7D8A2457705700E46B82 /* Views */,
 				F31D7D8524576CA100E46B82 /* Controllers */,
-				F31D7D772457609F00E46B82 /* Main.storyboard */,
+				F31D7D8A2457705700E46B82 /* Views */,
+				F3E6A58C245A5EFA00457453 /* Extensions */,
 				F31D7D7A245760A000E46B82 /* Assets.xcassets */,
-				F31D7D7C245760A000E46B82 /* LaunchScreen.storyboard */,
 				F31D7D7F245760A000E46B82 /* Info.plist */,
 				F31D7D942457AD1A00E46B82 /* GoogleService-Info.plist */,
 			);
@@ -148,10 +146,10 @@
 		F31D7D8A2457705700E46B82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F31D7D8C2457707300E46B82 /* UITextFieldExtension.swift */,
-				F31D7D8E2457709C00E46B82 /* UIColorExtension.swift */,
-				F31D7D962457B95900E46B82 /* UIViewControllerExtension.swift */,
 				F31D7DAD2457FEAE00E46B82 /* UserTableViewCell.swift */,
+				F3E6A5802459361F00457453 /* MessageTableViewCell.swift */,
+				F31D7D772457609F00E46B82 /* Main.storyboard */,
+				F31D7D7C245760A000E46B82 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,8 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				F31D7D9F2457DD7500E46B82 /* Firebase */,
-				F31D7DA92457F4F300E46B82 /* User.swift */,
-				F3E6A58A245A32E000457453 /* Message.swift */,
+				F393F8D8245BB3C900873C9C /* Data */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +169,16 @@
 				F31D7DA02457DD8600E46B82 /* FirebaseClient.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		F393F8D8245BB3C900873C9C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F31D7DA92457F4F300E46B82 /* User.swift */,
+				F3E6A58A245A32E000457453 /* Message.swift */,
+			);
+			name = Data;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F3E6A586245955AE00457453 /* Login-Signup */ = {
@@ -199,7 +206,6 @@
 			children = (
 				F30BB53A2459235F00B373D6 /* ChatViewController.swift */,
 				F3E6A582245942CF00457453 /* ChatViewControllerExtension.swift */,
-				F3E6A5802459361F00457453 /* MessageTableViewCell.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -219,6 +225,9 @@
 				F3E6A58D245A5F2000457453 /* DateExtension.swift */,
 				F3E6A58F245A5F2D00457453 /* StringExtension.swift */,
 				F3E6A591245A6CD000457453 /* UIImageViewExtension.swift */,
+				F31D7D8C2457707300E46B82 /* UITextFieldExtension.swift */,
+				F31D7D8E2457709C00E46B82 /* UIColorExtension.swift */,
+				F31D7D962457B95900E46B82 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
