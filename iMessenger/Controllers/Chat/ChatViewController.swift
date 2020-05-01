@@ -21,17 +21,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        textField.delegate = self
-        tableview.delegate = self
-        tableview.dataSource = self
-        tableview.register(MessageTableViewCell.self, forCellReuseIdentifier: "MessageTableViewCell")
         
-        subscribeToKeyboardNotifications()
         configureUI()
+        subscribeToKeyboardNotifications()
         
         messages.removeAll()
-        observeUserMessages()
         tableview.reloadData()
+
+        observeUserMessages()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,6 +36,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         unsubscribeFromKeyboardNotifications()
     }
     
+    
+    //////////////////////////////////////////////////////
+    // MARK: - Observe Messages
+    
+    // Observe User Messages with user ID
     func observeUserMessages(){
         guard let uid = Firebase.Auth.auth().currentUser?.uid else{
             return
@@ -55,9 +57,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let message = Message()
                     message.setValuesForKeys(dict)
                     
+                    //Append Message if the Chat partner is the message sender/recipent
                     if message.chatPartnerID() == self.user?.userID{
                         self.messages.append(message)
                     }
+                    
+                    //Sort ascendingly
                     self.messages.sort(by: { (message1, message2) -> Bool in
                         return message2.dateSent!.toDate(dateFormat: "yy-MM-dd HH:mm:ss") >
                             message1.dateSent!.toDate(dateFormat: "yy-MM-dd HH:mm:ss")
@@ -66,6 +71,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 DispatchQueue.main.async {
                     self.tableview.reloadData()
+                    // Scroll downwards to last entry whenever a new message is added
                     if(self.messages.count > 1){
                         let indexPath = IndexPath(row: self.messages.count-1, section: 0)
                         self.tableview.scrollToRow(at: indexPath, at: .bottom, animated: false)
@@ -75,6 +81,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     
+    
+    //////////////////////////////////////////////////////
+    // MARK: - Send Message
     
     // Send Message and hides KeyBoard when send in clicked
     @IBAction func sendButtonClicked(_ sender: Any) {
@@ -95,6 +104,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let message = Message()
         message.messageString = messageString
+        // Date extension to make conversions easier
         message.dateSent = Date().toString(dateFormat: "yy-MM-dd HH:mm:ss")
         message.toID = user?.userID
         message.fromID = Firebase.Auth.auth().currentUser?.uid
@@ -111,7 +121,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(messages.count)
         return messages.count
     }
     
@@ -134,14 +143,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.bubbleViewRightAnchor?.isActive = false
             cell.bubbleViewLeftAnchor?.isActive = true
             cell.profileImageView.isHidden = false
-            cell.setupNameandProfileImage(uid: message.chatPartnerID())
+            cell.setupProfileImage(uid: message.chatPartnerID())
         }
         
         cell.message = message
         return cell
     }
     
-    // Calculate text bubble height to fit text
+    // Calculate Cell height to fit text
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let text = messages[indexPath.row].messageString
         let size = CGSize(width: 180, height: 9000)

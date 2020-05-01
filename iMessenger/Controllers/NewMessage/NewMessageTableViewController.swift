@@ -63,7 +63,7 @@ class NewMessageTableViewController: UITableViewController {
         return 90
     }
     
-    //Open Chat when row is selected
+    //Open chat when row is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showChatControllerForUser(user: users[indexPath.row])
     }
@@ -73,6 +73,7 @@ class NewMessageTableViewController: UITableViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let chatVC = storyBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
         chatVC.user = user
+        //Replace current View with Chat view
         var vcs = navigationController!.viewControllers
         vcs[vcs.count - 1] = chatVC
         navigationController?.setViewControllers(vcs, animated: true)

@@ -29,7 +29,7 @@ class UserTableViewCell: UITableViewCell {
     
     var message: Message? {
         didSet {
-            setupNameandProfileImage()
+            setupNameAndProfileImage()
             messageLabel.text = message?.messageString
             let date = message?.dateSent?.toDate(dateFormat: "yy-MM-dd HH:mm:ss")
             let dateStr = date?.toString(dateFormat: "HH:mm a")
@@ -38,8 +38,7 @@ class UserTableViewCell: UITableViewCell {
             }
     }
     
-    func setupNameandProfileImage(){
-        
+    func setupNameAndProfileImage(){
         let ref = Firebase.Database.database().reference().child("users").child(message!.chatPartnerID())
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if let dict = snapshot.value as? [String: AnyObject]{

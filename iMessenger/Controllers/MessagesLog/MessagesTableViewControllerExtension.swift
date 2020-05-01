@@ -23,13 +23,11 @@ extension MessagesTableViewController{
         
         
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout))
-        
         let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(newMessage))
-        
-        navigationController?.navigationItem.leftBarButtonItem  = logoutBarButtonItem
-        navigationController?.navigationItem.rightBarButtonItem = addBarButtonItem
         
         self.navigationItem.leftBarButtonItem = logoutBarButtonItem
         self.navigationItem.rightBarButtonItem = addBarButtonItem
+        
+        tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
     }
 }

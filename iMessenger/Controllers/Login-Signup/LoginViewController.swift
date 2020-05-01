@@ -61,9 +61,6 @@ class LoginViewController: UIViewController {
                 self.showAlert(title: "Error", message: "Please try again later", presentCompletion: nil)
                 return
             }
-
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let messagesVC = storyBoard.instantiateViewController(withIdentifier: "MessagesTableViewController") as! MessagesTableViewController
             DispatchQueue.main.async {
                 self.messagesVC?.user = user
                 self.messagesVC?.setupController()

@@ -11,7 +11,8 @@ import UIKit
 
 extension UIViewController{
     //Display Error Message to the User
-    func showAlert(title: String, message: String, presentCompletion: ((UIAlertAction) -> Void)?) {
+    func showAlert(title: String, message: String, presentCompletion: ((UIAlertAction) -> Void)?)
+    {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Okay", style: .default, handler: presentCompletion)
         alertController.addAction(okButton)

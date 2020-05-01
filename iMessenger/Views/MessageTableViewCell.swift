@@ -28,8 +28,7 @@ class MessageTableViewCell: UITableViewCell {
         }
     }
     
-    func setupNameandProfileImage(uid: String){
-        
+    func setupProfileImage(uid: String){
         let ref = Firebase.Database.database().reference().child("users").child(uid)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if let dict = snapshot.value as? [String: AnyObject]{
@@ -37,8 +36,6 @@ class MessageTableViewCell: UITableViewCell {
                 self.profileImageView.loadImageUsingCacheWithURLString(url: imageURL ?? "")
             }
         })
-        
-        setNeedsLayout()
     }
     
     

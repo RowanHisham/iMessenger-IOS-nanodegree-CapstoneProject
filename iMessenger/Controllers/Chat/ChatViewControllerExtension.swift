@@ -11,7 +11,16 @@ import UIKit
 
 extension ChatViewController{
     
+    //////////////////////////////////////////////////////
+    // MARK: - UI
+    
     func configureUI() {
+        textField.delegate = self
+        tableview.delegate = self
+        tableview.dataSource = self
+        tableview.register(MessageTableViewCell.self, forCellReuseIdentifier: "MessageTableViewCell")
+        
+        
         self.navigationItem.title = user?.name
         tableview.separatorColor = .clear
         
@@ -26,10 +35,6 @@ extension ChatViewController{
         
         mediaButton.imageView?.contentMode = .scaleAspectFit
         mediaButton.imageView?.tintColor = .appleBlue()
-
-        
-        
-        
     }
     
     // Subscribe to Show/Hide Keyboard

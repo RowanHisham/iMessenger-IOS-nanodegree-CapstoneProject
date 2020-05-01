@@ -17,8 +17,7 @@ class MessagesTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
-        self.configureUI()
+        configureUI()
         checkLoggedInState()
     }
     
@@ -32,7 +31,6 @@ class MessagesTableViewController: UITableViewController, NSFetchedResultsContro
         messageDict.removeAll()
         tableView.reloadData()
         observeUserMessages()
-        tableView.reloadData()
         self.navigationItem.title = user?.name
     }
 
@@ -43,6 +41,12 @@ class MessagesTableViewController: UITableViewController, NSFetchedResultsContro
             return
         }
         
+        //If user is already loaded return
+        guard user == nil else{
+            return
+        }
+        
+        //If user not loaded fetch Data
         FirebaseClient.fetchUserData(completion:{ user in
             guard user != nil else {
                 self.logout()
@@ -56,6 +60,7 @@ class MessagesTableViewController: UITableViewController, NSFetchedResultsContro
         })
     }
     
+    // Return to Login Screen
     @objc func logout(){
         FirebaseClient.signOut()
         self.performSegue(withIdentifier: "login", sender: nil)
@@ -68,16 +73,19 @@ class MessagesTableViewController: UITableViewController, NSFetchedResultsContro
         }
     }
     
+    // Show New Message Screen
     @objc func newMessage(){
         self.performSegue(withIdentifier: "newMessage", sender: nil)
     }
     
     
+    // Observe Messages related to the logged in user and fetch them
     func observeUserMessages(){
         guard let uid = Firebase.Auth.auth().currentUser?.uid else{
             return
         }
         
+        // Observe with user ID
         let ref = Firebase.Database.database().reference().child("user-messages").child(uid)
         ref.observe(.childAdded, with: { snapshot in
             
@@ -89,15 +97,21 @@ class MessagesTableViewController: UITableViewController, NSFetchedResultsContro
                     let message = Message()
                     message.setValuesForKeys(dict)
             
+                    //Save Messages to Dictionary first to group all the recieved messages and display only the latest
+                    //message for each chat partner
                     self.messageDict[message.chatPartnerID()] = message
                     self.messages = Array(self.messageDict.values)
+                    
+                    //Sort to view latest messages first
                     self.messages.sort(by: { (message1, message2) -> Bool in
+                        // String extension to make converion easier
                         return message1.dateSent!.toDate(dateFormat: "yy-MM-dd HH:mm:ss") >
                             message2.dateSent!.toDate(dateFormat: "yy-MM-dd HH:mm:ss")
                     })
                 }
                     
-                    //Causes Images Glitches as not all messages should be displayed
+                    //Causes images glitches as not all messages should be displayed
+                //TODO: Fix this
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -106,11 +120,12 @@ class MessagesTableViewController: UITableViewController, NSFetchedResultsContro
         })
     }
     
-    
+    // Load chat partner data and pass it to Chat View
     func showChatControllerForUser(message: Message){
         let user = User()
         user.userID = message.chatPartnerID()
         
+        //Fetch chat partner data
         let ref = Firebase.Database.database().reference().child("users").child(user.userID!)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let dict = snapshot.value as? [String: String] else{
@@ -130,13 +145,10 @@ class MessagesTableViewController: UITableViewController, NSFetchedResultsContro
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-
         return messages.count
     }
     

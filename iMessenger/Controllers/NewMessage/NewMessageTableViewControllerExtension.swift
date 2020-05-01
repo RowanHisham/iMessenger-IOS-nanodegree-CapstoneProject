@@ -11,10 +11,12 @@ import UIKit
 
 extension NewMessageTableViewController{
     
+    //////////////////////////////////////////////////////
+    // MARK: - UI
+
     func configureUI() {
         let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelNewMessage))
         self.navigationItem.leftBarButtonItem  = cancelBarButtonItem
-        
         self.tableView.separatorColor = .clear
         
         tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")

@@ -11,16 +11,21 @@ import Firebase
 
 class FirebaseClient{
     
+    //////////////////////////////////////////////////////
+    // MARK: - Regiester New User
     
+    // Create User Authentication Using Email and Password
     static func createUser(email: String, password: String, completion:  @escaping (AuthDataResult?,Error?)-> Void){
         Firebase.Auth.auth().createUser(withEmail: email, password: password, completion: completion)
     }
     
+    // Upload Image to Firebase Storage
     static func uploadImage(data: Data?, completion: @escaping (String?, Error?)-> Void ){
         guard data != nil else{
             completion("", nil)
             return
         }
+        //Generate random imageName
         let imageName = NSUUID().uuidString
         let storageRef = Firebase.Storage.storage().reference().child(imageName)
         storageRef.putData(data!, metadata: nil, completion: { metadata, error in
@@ -28,6 +33,7 @@ class FirebaseClient{
                 completion("", error)
                 return
             }
+            //Fetch image download url
             storageRef.downloadURL(completion: { url, error in
                 guard error == nil else{
                     completion("", error)
@@ -40,6 +46,7 @@ class FirebaseClient{
         })
     }
     
+    // Add user data in database
     static func regiesterUserInDatabase(user: User, completion: @escaping (Error?, DatabaseReference)->Void){
         let ref = Firebase.Database.database().reference()
         
@@ -49,15 +56,23 @@ class FirebaseClient{
     }
     
     
+    //////////////////////////////////////////////////////
+    // MARK: - Login / Signout
+    
     static func loginAuth(email: String, password: String, completion: @escaping (AuthDataResult?,Error?)-> Void){
         Firebase.Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
+    static func signOut(){
+        try? Firebase.Auth.auth().signOut()
+    }
+    
+    //////////////////////////////////////////////////////
+    // MARK: - Fetch Data
+    
     static func fetchUserData(completion: @escaping (User?)-> Void){
         let uid = Firebase.Auth.auth().currentUser!.uid
         Firebase.Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { snapshot in
-
-            
             guard let dict = snapshot.value as? [String: AnyObject] else {
                 completion(nil)
                 return
@@ -81,6 +96,9 @@ class FirebaseClient{
         })
     }
     
+    //////////////////////////////////////////////////////
+    // MARK: - Download Images / Send Messages
+    
     static func downloadImage(imageURL: String?, completion: @escaping (Data?, Error?)-> Void ){
         guard imageURL != nil else{
             return
@@ -97,10 +115,8 @@ class FirebaseClient{
         task.resume()
     }
     
-    static func signOut(){
-        try? Firebase.Auth.auth().signOut()
-    }
     
+    // Save Message to Messages and to User-Messages of both sender and reciepent uid
     static func sendMessage(message: Message){
     
         let ref = Firebase.Database.database().reference().child("messages")
@@ -116,7 +132,7 @@ class FirebaseClient{
             
             let senderMessageRef = Firebase.Database.database().reference().child("user-messages").child(message.fromID!)
             let recipentMessageRef = Firebase.Database.database().reference().child("user-messages").child(message.toID!)
-            
+    
             let messageID = childRef.key!
             
             senderMessageRef.updateChildValues([messageID: 1])
