@@ -1,5 +1,5 @@
 # iMessenger
-This is the final capstone project app for Udacity iOS Developer Nanodegree. This is a messanger clone app, it allows
+This is the final capstone project app for Udacity iOS Developer Nanodegree. This is a messenger clone app, it allows
 the user to sign up for an account, login using their email and password, view all of the users on the app, send
 and recieve messages in real-time. Planning on adding other features in the future like push-notifications and sending images 
 and videos.
