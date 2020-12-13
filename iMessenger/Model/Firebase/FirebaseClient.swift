@@ -103,8 +103,10 @@ class FirebaseClient{
         guard imageURL != nil else{
             return
         }
-        
-        let request = URLRequest(url: URL(string: imageURL!)!)
+       guard let url = URL(string: imageURL!) else {
+            return
+        }
+        let request = URLRequest(url:  url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil, data != nil else{
                 completion(nil, error)
